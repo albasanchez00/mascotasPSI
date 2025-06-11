@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Mascotas</title>
-    <script src="./js/script.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" media="all">
-    <link rel="icon" type="image/svg+xml" href="./media/logo-mascotas.svg">
+    <script th:src="@{/js/script.js}" defer></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" media="all">
+    <link rel="icon" type="image/svg+xml" th:href="@{/media/logo-mascotas.svg}">
 </head>
 <body>
 <section class="contenido-principal">
     <header role="banner">
         <div class="container header__inner">
             <picture class="header__logo">
-                <a href="index.html"><img
+                <a th:href="@{/}"><img
                         src="/media/logo-mascotas.svg"
                         alt="Logo de la tienda de mascotas PetShop"
                         width="150"

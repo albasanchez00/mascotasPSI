@@ -8,5 +8,4 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     //Vamos a necesitar que el repositorio busque aquí por username...
     Optional<Usuario> findByUsername(String username);
-
 }
