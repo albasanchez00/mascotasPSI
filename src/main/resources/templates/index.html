@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mascotas</title>
+    <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" media="all">
+    <link rel="icon" type="image/svg+xml" href="./media/logo-mascotas.svg">
+</head>
+<body>
+<section class="contenido-principal">
+    <header role="banner">
+        <div class="container header__inner">
+            <picture class="header__logo">
+                <a href="index.html"><img
+                        src="/media/logo-mascotas.svg"
+                        alt="Logo de la tienda de mascotas PetShop"
+                        width="150"
+                        height="50"
+                        loading="lazy"></a>
+            </picture>
+            <button id="nav-toggle" class="header__toggle" aria-label="Abrir menú" aria-expanded="false">
+                ☰
+            </button>
+            <nav id="nav" class="header__nav" role="navigation">
+                <ul class="header__list">
+                    <li><a th:href="@{/index}">Inicio</a></li>
+                    <li><a href="#funciones">Funciones</a></li>
+                    <li><a href="#destacado">Destacado</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher" aria-label="Language selector">
+                <a th:href="@{/formulario}" aria-label="Registro de Mascotas">
+                    <img src="/media/registro-mascota.png" alt="registro mascotas"/>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="banner">
+            <div class="overlay">
+                <h1>Bienvenido al Registro de Mascotas</h1>
+                <p>Protege y cuida a tu mejor amigo registrándolo hoy mismo</p>
+                <a th:href="@{/registro}" class="boton-banner">Registrar Mascota</a>
+            </div>
+        </section>
+        <section id="beneficios">
+            <h3>¿Por qué registrar a tu mascota?</h3>
+            <ul>
+                <li>✔ Historial médico centralizado</li>
+                <li>✔ Información de contacto en caso de pérdida</li>
+                <li>✔ Control de vacunas y tratamientos</li>
+            </ul>
+        </section>
+        <section id="funciones">
+            <h3>¿Qué hacemos en nuestra protectora?</h3>
+
+            <div class="funcion-card">
+                <div class="funcion-img">
+                    <img src="/media/husky-en-el-parque.png" alt="Acogida y recuperación">
+                </div>
+                <div class="funcion-texto">
+                    <h4>Acogida y recuperación</h4>
+                    <p>Ofrecemos un espacio seguro y cálido para personas en situación de vulnerabilidad, brindando atención inmediata, alojamiento temporal y acompañamiento emocional. Facilitamos el acceso a servicios básicos, orientación social y atención sanitaria inicial. Nuestro equipo multidisciplinar evalúa cada caso para diseñar un plan personalizado de recuperación e integración. </p>
+                </div>
+            </div>
+
+            <div class="funcion-card reverse">
+                <div class="funcion-img">
+                    <img src="/media/gato-jugando-con-arbol.png" alt="Adopciones responsables">
+                </div>
+                <div class="funcion-texto">
+                    <h4>Adopciones responsables</h4>
+                    <p>Fomentamos adopciones conscientes, asegurando el bienestar animal y la idoneidad del adoptante. Evaluamos cada solicitud mediante entrevistas y visitas previas. Acompañamos el proceso con asesoramiento veterinario y etológico. Todos los animales se entregan vacunados, desparasitados y esterilizados. Promovemos la tenencia responsable a través de formación y seguimiento post-adopción. </p>
+                </div>
+            </div>
+
+            <div class="funcion-card">
+                <div class="funcion-img">
+                    <img src="/media/perro-en-el-parque.png" alt="Vacunación y salud">
+                </div>
+                <div class="funcion-texto">
+                    <h4>Vacunación y salud</h4>
+                    <p>Ofrecemos un programa integral de vacunación preventiva para animales, adaptado a cada especie y etapa de vida. Realizamos controles veterinarios periódicos para garantizar su bienestar. Detectamos y tratamos enfermedades de forma temprana mediante revisiones y diagnósticos especializados. Asesoramos sobre cuidados, nutrición y desparasitación.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="destacado">
+            <h3>Nuestros Logros</h3>
+            <div class="destacado-grid">
+                <div class="destacado-card">
+                    <img src="/media/cuidado-de-mascotas.png" alt="Icono mascotas registradas">
+                    <div class="texto">
+                        <h4>+2.000 Mascotas Registradas</h4>
+                        <p>Animales con historial y cuidados actualizados. Protección garantizada.</p>
+                    </div>
+                </div>
+                <div class="destacado-card">
+                    <img src="/media/adiestramiento.png" alt="Icono mascotas registradas">
+                    <div class="texto">
+                        <h4>Adiestramiento</h4>
+                        <p>Animales con historial agresivo y cuidados actualizados. Adiestramiento asegurado.</p>
+                    </div>
+                </div>
+                <div class="destacado-card">
+                    <img src="/media/clinica.png" alt="Icono clínicas veterinarias">
+                    <div class="texto">
+                        <h4>+100 Clínicas Asociadas</h4>
+                        <p>Colaboraciones activas para atención médica, vacunas y seguimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="newsletter" class="newsletter">
+            <div class="newsletter__contenido">
+                <h3>Suscríbete a nuestro boletín</h3>
+                <p>Recibe noticias, consejos y novedades sobre el cuidado de tu mascota.</p>
+                <form class="newsletter__form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirme</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__inner">
+            <p class="footer__copy">© 2025 Alba Sánchez Olmedo</p>
+        </div>
+    </footer>
+</section>
+</body>
+</html>

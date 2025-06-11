@@ -2,81 +2,123 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Datos de Mascotas</title>
+    <title>Formulario Mascotas</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" media="all">
+    <link rel="icon" type="image/svg+xml" href="./media/logo-mascotas.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 class="text-center" th:text="${mascotas.getId()==0?'Nueva Mascota':'Editar Mascota'}"></h1>
-<h2>Datos Personales</h2>
-<form class="row g-3 needs-validation" novalidate th:action="@{/crud}" method="POST"  th:object="${mascotas}">
-    <!--    De modo oculto, tomamos el id que se envia por el metodo GET-->
-    <input type="hidden" th:field="*{id}">
-    <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="validationCustom01" required  th:field="*{nombre}" >
-        <div class="valid-feedback">
-            ok!
+<section class="contenido-principal">
+    <header role="banner">
+        <div class="container header__inner">
+            <picture class="header__logo">
+                <a href="index.html"><img
+                        src="/media/logo-mascotas.svg"
+                        alt="Logo de la tienda de mascotas PetShop"
+                        width="150"
+                        height="50"
+                        loading="lazy"></a>
+            </picture>
+            <button id="nav-toggle" class="header__toggle" aria-label="Abrir menú" aria-expanded="false">
+                ☰
+            </button>
+            <nav id="nav" class="header__nav" role="navigation">
+                <ul class="header__list">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#funciones">Funciones</a></li>
+                    <li><a href="#destacado">Destacado</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher" aria-label="Language selector">
+                <a href="./formulario.html" aria-label="Registro de Mascotas">
+                    <img src="/media/registro-mascota.png" alt="registro mascotas"/>
+                </a>
+            </div>
         </div>
-        <div class="invalid-feedback">
-            Indica el Nombre
+    </header>
+
+    <main>
+        <section class="formulario-container">
+            <h1 class="text-center" th:text="${mascota.getId()==0?'Nueva Mascota':'Editar Mascota'}"></h1>
+            <h2>Datos de la Mascota</h2>
+            <form class="row g-3 needs-validation" novalidate th:action="@{/crud}" method="POST"  th:object="${mascota}">
+                <!--    De modo oculto, tomamos el id que se envia por el metodo GET-->
+                <input type="hidden" th:field="*{id}">
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="validationCustom01" required  th:field="*{nombre}" >
+                    <div class="valid-feedback">
+                        ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Indica el Nombre
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">Especie</label>
+                    <input type="text" class="form-control" id="validationCustom02"  required th:field="*{especie}">
+                    <div class="valid-feedback">
+                        ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Indica la especie
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom04" class="form-label">Raza</label>
+                    <input type="text" class="form-control" id="validationCustom04"  required th:field="*{raza}">
+                    <div class="valid-feedback">
+                        ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Indica la raza
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom03" class="form-label">Edad</label>
+                    <input type="number" class="form-control" id="validationCustom03"
+                           required th:field="*{edad}">
+                    <div class="valid-feedback">
+                        ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Indica la Edad
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom05" class="form-label">Peso</label>
+                    <input type="text" class="form-control" id="validationCustom05" required th:field="*{peso}">
+                    <div class="valid-feedback">
+                        ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Indica el peso
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom06" class="form-label">Dni Propietario</label>
+                    <input type="text" class="form-control" id="validationCustom06"  required th:field="*{dniPropietario}">
+                    <div class="valid-feedback">
+                        ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Indica el dni
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Guardar Mascota</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__inner">
+            <p class="footer__copy">© 2025 Alba Sánchez Olmedo</p>
         </div>
-    </div>
-    <div class="col-md-4">
-        <label for="validationCustom02" class="form-label">Especie</label>
-        <input type="text" class="form-control" id="validationCustom02"  required th:field="*{especie}">
-        <div class="valid-feedback">
-            ok!
-        </div>
-        <div class="invalid-feedback">
-            Indica la especie
-        </div>
-    </div>
-    <div class="col-md-4">
-        <label for="validationCustom04" class="form-label">Raza</label>
-        <input type="text" class="form-control" id="validationCustom04"  required th:field="*{raza}">
-        <div class="valid-feedback">
-            ok!
-        </div>
-        <div class="invalid-feedback">
-            Indica la raza
-        </div>
-    </div>
-    <div class="col-md-4">
-        <label for="validationCustom03" class="form-label">Edad</label>
-        <input type="number" class="form-control" id="validationCustom03"
-               required th:field="*{edad}">
-        <div class="valid-feedback">
-            ok!
-        </div>
-        <div class="invalid-feedback">
-            Indica la Edad
-        </div>
-    </div>
-    <div class="col-md-4">
-        <label for="validationCustom05" class="form-label">Peso</label>
-        <input type="text" class="form-control" id="validationCustom05" required th:field="*{peso}">
-        <div class="valid-feedback">
-            ok!
-        </div>
-        <div class="invalid-feedback">
-            Indica el peso
-        </div>
-    </div>
-    <div class="col-md-4">
-        <label for="validationCustom06" class="form-label">Dni Propietario</label>
-        <input type="text" class="form-control" id="validationCustom06"  required th:field="*{dniPropietario}">
-        <div class="valid-feedback">
-            ok!
-        </div>
-        <div class="invalid-feedback">
-            Indica el dni
-        </div>
-    </div>
-    <div class="col-12">
-        <button class="btn btn-primary" type="submit">Guardar Mascota</button>
-    </div>
-</form>
+    </footer>
+</section>
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
