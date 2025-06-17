@@ -7,12 +7,11 @@ import jakarta.persistence.Id;
 @Entity
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String username;
     private String password;
     private String rol;
-
 
     //getter y setter
     public int getId() {
@@ -47,15 +46,12 @@ public class Usuario {
         this.rol = rol;
     }
 
-
     //ToString()
     @Override
     public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", rol='" + rol + '\'' +
-                '}';
+        return "Usuario{" + id + "}" +
+                "\nUsername → " + username +
+                "\nPassword → " + password +
+                "\nRol → " + rol;
     }
 }

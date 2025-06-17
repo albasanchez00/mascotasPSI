@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mascotas</title>
+    <title>Home</title>
+    <link rel="shortcut icon" type="image/svg" th:href="@{/media/logo-mascotas.svg}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <script th:src="@{/js/script.js}" defer></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" media="all">
-    <link rel="icon" type="image/svg+xml" th:href="@{/media/logo-mascotas.svg}">
 </head>
 <body>
 <section class="contenido-principal">
@@ -32,7 +32,10 @@
             </nav>
             <div class="lang-switcher" aria-label="Language selector">
                 <a th:href="@{/formulario}" aria-label="Registro de Mascotas">
-                    <img src="/media/registro-mascota.png" alt="registro mascotas"/>
+                    <img src="/media/registro-mascota.png" alt="registro de mascotas"/>
+                </a>
+                <a th:href="@{/login}" aria-label="Inicio Sesión">
+                    <img src="/media/user-icon.png" alt="inicio de sesión"/>
                 </a>
             </div>
         </div>

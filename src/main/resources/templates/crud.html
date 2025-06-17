@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Lista Mascotas</title>
@@ -9,84 +9,46 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </head>
 <body>
-<section class="contenido-principal">
-  <header>
-    <div class="container header__inner">
-      <picture class="header__logo">
-        <a href="index.html"><img
-                src="/media/logo-mascotas.svg"
-                alt="Logo de la tienda de mascotas PetShop"
-                width="150"
-                height="50"
-                loading="lazy"></a>
-      </picture>
-      <button id="nav-toggle" class="header__toggle" aria-label="Abrir menú" aria-expanded="false">
-        ☰
-      </button>
-      <nav id="nav" class="header__nav" role="navigation">
-        <ul class="header__list">
-          <li><a th:href="@{/index}">Inicio</a></li>
-          <li><a href="#funciones">Funciones</a></li>
-          <li><a href="#destacado">Destacado</a></li>
-          <li><a href="#beneficios">Beneficios</a></li>
-        </ul>
-      </nav>
-      <div class="lang-switcher" aria-label="Language selector">
-        <a th:href="@{/formulario}" aria-label="Registro de Mascotas">
-          <img src="/media/registro-mascota.png" alt="registro mascotas"/>
-        </a>
-      </div>
+<div class="container ">
+  <h1 class="text-center">Listado de Mascotas</h1>
+  <div class="row">
+    <div class="col-2" sec:authorize="hasRole('Admin')">
+      <a th:href="@{/formulario}" class="btn btn-primary mt-5 px-4" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></a>
     </div>
-  </header>
-  <main class="mt-5 mb-5">
-    <div class="container crud-container">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="mb-0">Listado de Mascotas</h1>
-        <a th:href="@{/formulario}" class="btn btn-primary">+ Nueva Mascota</a>
-      </div>
-      <div class="table-responsive shadow-sm bg-white rounded">
-        <table class="table table-hover mb-0">
-          <thead class="bg-primary text-white">
-          <tr>
-            <th>Nombre</th>
-            <th>Especie</th>
-            <th>Raza</th>
-            <th>Edad</th>
-            <th>Peso</th>
-            <th>DNI Propietario</th>
-            <th class="text-center">Acciones</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="mascota : ${mascotas}">
-            <td th:text="${mascota.nombre}"></td>
-            <td th:text="${mascota.especie}"></td>
-            <td th:text="${mascota.raza}"></td>
-            <td th:text="${mascota.edad}"></td>
-            <td th:text="${mascota.peso}"></td>
-            <td th:text="${mascota.dniPropietario}"></td>
-            <td class="text-center">
-              <a th:href="@{'editar/'+ ${mascota.id}}" class="btn btn-warning">
-                <i class="bi bi-pencil-fill">✏️ Editar</i>
-              </a>
-              <a th:href="@{'eliminar/'+ ${mascota.id}}"
-                 class="btn btn-danger"
-                 onclick="return confirm('¿Seguro que deseas eliminar esta mascota?')">
-                <i class="bi bi-trash-fill">🗑️ Eliminar</i>
-              </a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
+  </div>
+  <table class="table table-striped mt-5">
+    <tr>
+      <th>Nombre</th>
+      <th>Especie</th>
+      <th>Raza</th>
+      <th>Edad</th>
+      <th>Peso</th>
+      <th>Dni_Propietario</th>
+      <th sec:authorize="hasRole('Admin')">Acciones</th>
+    </tr>
+    <tr th:each="mascota : ${mascotaParaCRUD}">
+      <td th:text="${mascota.nombre}"></td>
+      <td th:text="${mascota.especie}"></td>
+      <td th:text="${mascota.raza}"></td>
+      <td th:text="${mascota.edad}"></td>
+      <td th:text="${mascota.peso}"></td>
+      <td th:text="${mascota.dni_propietario}"></td>
+      <td>
+        <a th:href="@{'editar/' + ${mascota.getIdMascota()}}"
+           class="btn btn-warning"
+           sec:authorize="hasRole('Admin')">Editar</a>
 
-  <footer class="footer" role="contentinfo">
-    <div class="container footer__inner">
-      <p class="footer__copy">© 2025 Alba Sánchez Olmedo</p>
-    </div>
-  </footer>
-</section>
+        <a th:href="@{'borrar/' + ${mascota.getIdMascota()}}"
+           class="btn btn-danger"
+           onclick="return confirm('¿Estas seguro de que quieres borrar a esta mascota?')"
+           sec:authorize="hasRole('Admin')">Eliminar</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 </body>
 </html>
