@@ -24,16 +24,13 @@
             </button>
             <nav id="nav" class="header__nav" role="navigation">
                 <ul class="header__list">
-                    <li><a th:href="@{/index}">Inicio</a></li>
+                    <li><a th:href="@{/}">Inicio</a></li>
                     <li><a href="#funciones">Funciones</a></li>
                     <li><a href="#destacado">Destacado</a></li>
                     <li><a href="#beneficios">Beneficios</a></li>
                 </ul>
             </nav>
             <div class="lang-switcher" aria-label="Language selector">
-                <a th:href="@{/formulario}" aria-label="Registro de Mascotas">
-                    <img src="/media/registro-mascota.png" alt="registro de mascotas"/>
-                </a>
                 <a th:href="@{/login}" aria-label="Inicio Sesión">
                     <img src="/media/user-icon.png" alt="inicio de sesión"/>
                 </a>
@@ -41,11 +38,11 @@
         </div>
     </header>
     <main>
-        <section class="banner">
-            <div class="overlay">
-                <h1>Bienvenido al Registro de Mascotas</h1>
-                <p>Protege y cuida a tu mejor amigo registrándolo hoy mismo</p>
-                <a th:href="@{/registro}" class="boton-banner">Registrar Mascota</a>
+        <section class="banner mejor-banner">
+            <div class="contenido-banner">
+                <h1>Hazte Cliente</h1>
+                <p>Regístrese y haz que su mascota forme parte de nuestra comunidad protegida y pueda disfrutar de todos nuestros servicios</p>
+                <a href="/login" class="boton-registrar">Hacerse Cliente</a>
             </div>
         </section>
         <section id="beneficios">

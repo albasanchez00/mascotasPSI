@@ -15,12 +15,15 @@ import org.springframework.stereotype.Service;
 public class UsuarioDetailsServices implements UserDetailsService {
     private final UsuarioRepository usuarioRepository;
 
+    //Constructor
     public UsuarioDetailsServices(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
+    //Metodo que devuelve los datos del usuario
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //Busca el usuario en la base de datos
         return usuarioRepository.findByUsername(username).map(UsuarioDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
     }
