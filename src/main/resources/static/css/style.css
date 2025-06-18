@@ -667,7 +667,26 @@ main {
     }
 }
 
-
+/* ==== FOOTER ==== */
+.btn-general{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.form-search{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.div-btn{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 45%;
+    justify-content: flex-start;
+}
 
 /* ==== FOOTER ==== */
 footer {

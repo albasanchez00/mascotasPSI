@@ -21,7 +21,7 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(auth->auth.requestMatchers(HttpMethod.GET,"/","/idnex","/media/**","/css/**","/js/**").permitAll()
                 //Acceso al crud
                 .requestMatchers(HttpMethod.GET,"/crud").hasAnyRole("Admin","User")
-                .requestMatchers(HttpMethod.POST,"/crud").hasRole("Admin")
+                .requestMatchers(HttpMethod.POST,"/crud").hasAnyRole("Admin","User")
 
         //Formulario de Gestión de Usuarios: solo rol 'admin'
                         .requestMatchers(HttpMethod.GET,"/altaUsuario","/formulario").hasAnyRole("Admin")

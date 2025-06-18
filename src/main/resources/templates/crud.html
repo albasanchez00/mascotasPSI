@@ -43,18 +43,34 @@
     <h1 class="text-center">Listado de Mascotas</h1>
     <!--boton para cerrar sesion-->
     <div class="row">
-      <div class="col-2" sec:authorize="hasRole('Admin')">
+      <div class="col-1">
+        <a th:href="@{/pdf}" target="_blank" aria-label="exportar como pdf" class="btn btn-primary mt-5 px-4" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-200h80v-167l64 64 56-57-160-160-160 160 57 56 63-63v167ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg></a>
+      </div>
+      <div class="col-1" sec:authorize="hasRole('Admin')">
         <a th:href="@{/altaUsuario}" aria-label="agregar usuario" class="btn btn-primary mt-5 px-4" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M720-400v-120H600v-80h120v-120h80v120h120v80H800v120h-80Zm-360-80q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0-80Zm0 400Z"/></svg></a>
       </div>
 
-      <div class="col-2" sec:authorize="hasRole('Admin')">
+      <div class="col-1" sec:authorize="hasRole('Admin')">
         <a th:href="@{/formulario}" aria-label="agregar mascota" class="btn btn-primary mt-5 px-4" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M180-475q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Zm180-160q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Zm240 0q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Zm180 160q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM266-75q-45 0-75.5-34.5T160-191q0-52 35.5-91t70.5-77q29-31 50-67.5t50-68.5q22-26 51-43t63-17q34 0 63 16t51 42q28 32 49.5 69t50.5 69q35 38 70.5 77t35.5 91q0 47-30.5 81.5T694-75q-54 0-107-9t-107-9q-54 0-107 9t-107 9Z"/></svg></a>
       </div>
 
-      <div class="col-2">
+      <div class="col-1">
         <a th:href="@{/logout}" aria-label="Cerrar sesión" class="btn btn-danger mt-5 px-4" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
       </div>
+      <div class="row mt-5 mb-5">
+        <div class="div-btn input-group">
+          <form th:action="@{/buscar}" method="get" class="form-search">
+            <div class="form-outline rounded shadow-sm">
+              <input type="text" id="form1" class="form-control" name="nombre" />
+            </div>
+            <button type="submit" class="btn btn-primary" data-mdb-ripple-init>
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
+
     <div class="table-responsive mt-5 rounded shadow-sm">
       <table class="table align-middle table-borderless">
         <thead class="bg-light text-secondary fw-bold border-bottom border-2">
@@ -80,6 +96,7 @@
             <a th:href="@{'editar/' + ${mascota.getId()}}" class="btn btn-sm btn-outline-warning rounded-pill me-1">Editar</a>
             <a th:href="@{'borrar/' + ${mascota.getId()}}" class="btn btn-sm btn-outline-danger rounded-pill"
                onclick="return confirm('¿Seguro que deseas eliminar esta mascota?')">Eliminar</a>
+            <a th:href="@{'consulta/' + ${mascota.getId()}}" class="btn btn-sm btn-primary rounded-pill">Consultar</a>
           </td>
         </tr>
         </tbody>
