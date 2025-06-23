@@ -27,7 +27,7 @@ public class HistorialController {
     }
 
     @GetMapping("/historial/{id}")
-    public String getHistorialMascota(@PathVariable int id){
+    public String getHistorialById(@PathVariable int id){
         historialRepository.findById(id).get();
         return "historial";
     }
@@ -57,7 +57,7 @@ public class HistorialController {
     public String getHistorialById(@PathVariable int id, Model model){
         Mascotas mascota = mascotasRepository.findById(id).orElseThrow();
         List<Historial> historial = historialRepository.findByMascotasIdMascota(id);
-        model.addAttribute("mascotas", mascota);
+        model.addAttribute("mascota", mascota);
         model.addAttribute("historial", historial);
         model.addAttribute("nuevaVisita", new Historial());
         return "historial";

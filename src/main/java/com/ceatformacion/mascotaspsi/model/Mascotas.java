@@ -9,7 +9,7 @@ public class Mascotas {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Espera el valor identificativo.
-    private int id;
+    private int idMascota;
     private String nombre;
     private String especie;
     private String raza;
@@ -18,11 +18,11 @@ public class Mascotas {
     private String dniPropietario;
 
     public int getId() {
-        return id;
+        return idMascota;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idMascota = id;
     }
 
     public String getNombre() {
@@ -76,7 +76,7 @@ public class Mascotas {
     @Override
     public String toString() {
         return "Mascotas{" +
-                "id=" + id +
+                "id=" + idMascota +
                 ", nombre='" + nombre + '\'' +
                 ", especie='" + especie + '\'' +
                 ", raza='" + raza + '\'' +

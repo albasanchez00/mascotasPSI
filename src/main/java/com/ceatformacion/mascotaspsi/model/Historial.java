@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Historial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Historial;
+    private int id;
 
     private LocalDate fechaVisita;
     private String motivoConsulta;
@@ -17,17 +17,17 @@ public class Historial {
 
     //Si necesito conectarlo con Mascotas...
     @ManyToOne
-    @JoinColumn(name = "id_Mascota", nullable = false)
+    @JoinColumn(name = "id_mascota", nullable = false)
     private Mascotas mascotas;
 
     //getter - setter - toString()...
 
-    public int getId_Historial() {
-        return id_Historial;
+    public int getId() {
+        return id;
     }
 
-    public void setId_Historial(int id_Historial) {
-        this.id_Historial = id_Historial;
+    public void setId(int id_Historial) {
+        this.id = id_Historial;
     }
 
     public LocalDate getFechaVisita() {
@@ -72,7 +72,7 @@ public class Historial {
 
     @Override
     public String toString() {
-        return "Historial{" + id_Historial +" }"+
+        return "Historial{" + id +" }"+
                 "\nfechaVisita=" + fechaVisita +
                 "\nmotivoConsulta='" + motivoConsulta +
                 "\ntratamiento='" + tratamiento +

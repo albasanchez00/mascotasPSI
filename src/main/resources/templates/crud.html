@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Mascotas</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script type="text/javascript" src="/js/script.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="./media/logo-mascotas.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -11,34 +11,8 @@
 </head>
 <body>
 <section class="contenido-principal">
-  <header role="banner">
-    <div class="container header__inner">
-      <picture class="header__logo">
-        <a th:href="@{/}"><img
-                src="/media/logo-mascotas.svg"
-                alt="Logo de la tienda de mascotas PetShop"
-                width="150"
-                height="50"
-                loading="lazy"></a>
-      </picture>
-      <button id="nav-toggle" class="header__toggle" aria-label="Abrir menú" aria-expanded="false">
-        ☰
-      </button>
-      <nav id="nav" class="header__nav" role="navigation">
-        <ul class="header__list">
-          <li><a th:href="@{/}">Inicio</a></li>
-          <li><a th:href="@{/}">Funciones</a></li>
-          <li><a th:href="@{/}">Destacado</a></li>
-          <li><a th:href="@{/}">Beneficios</a></li>
-        </ul>
-      </nav>
-      <div class="lang-switcher" aria-label="Language selector">
-        <a th:href="@{/login}" aria-label="Inicio Sesión">
-          <img src="/media/user-icon.png" alt="inicio de sesión"/>
-        </a>
-      </div>
-    </div>
-  </header>
+  <div th:replace="fragments/header :: header"></div>
+
   <div class="container ">
     <h1 class="text-center">Listado de Mascotas</h1>
     <!--boton para cerrar sesion-->
@@ -57,18 +31,18 @@
       <div class="col-1">
         <a th:href="@{/logout}" aria-label="Cerrar sesión" class="btn btn-danger mt-5 px-4" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
       </div>
-      <div class="row mt-5 mb-5">
-        <div class="div-btn input-group">
-          <form th:action="@{/buscar}" method="get" class="form-search">
-            <div class="form-outline rounded shadow-sm">
-              <input type="text" id="form1" class="form-control" name="nombre" />
-            </div>
-            <button type="submit" class="btn btn-primary" data-mdb-ripple-init>
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
-            </button>
-          </form>
-        </div>
+
+      <div class="div-btn input-group">
+        <form th:action="@{/buscar}" method="get" class="form-search">
+          <div class="form-outline rounded shadow-sm">
+            <input type="text" id="form1" class="form-control" name="nombre" />
+          </div>
+          <button type="submit" class="btn btn-primary" data-mdb-ripple-init>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+          </button>
+        </form>
       </div>
+
     </div>
 
     <div class="table-responsive mt-5 rounded shadow-sm">
@@ -96,7 +70,7 @@
             <a th:href="@{'editar/' + ${mascota.getId()}}" class="btn btn-sm btn-outline-warning rounded-pill me-1">Editar</a>
             <a th:href="@{'borrar/' + ${mascota.getId()}}" class="btn btn-sm btn-outline-danger rounded-pill"
                onclick="return confirm('¿Seguro que deseas eliminar esta mascota?')">Eliminar</a>
-            <a th:href="@{'consulta/' + ${mascota.getId()}}" class="btn btn-sm btn-primary rounded-pill">Consultar</a>
+            <a th:href="@{'/consulta/' + ${mascota.getId()}}" class="btn btn-sm btn-primary rounded-pill">Consultar</a>
           </td>
         </tr>
         </tbody>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style}" media="all">
+    <script type="text/javascript" src="/js/script.js" defer></script>
+</head>
+<body>
+<header role="banner">
+  <div class="container header__inner">
+    <picture class="header__logo">
+      <a th:href="@{/}"><img
+              src="/media/logo-mascotas.svg"
+              alt="Logo de la tienda de mascotas PetShop"
+              width="150"
+              height="50"
+              loading="lazy"></a>
+    </picture>
+    <button id="nav-toggle" class="header__toggle" aria-label="Abrir menú" aria-expanded="false">
+      ☰
+    </button>
+    <nav id="nav" class="header__nav" role="navigation">
+      <ul class="header__list">
+        <li><a th:href="@{/}">Inicio</a></li>
+        <li><a th:href="@{/}">Funciones</a></li>
+        <li><a th:href="@{/}">Destacado</a></li>
+        <li><a th:href="@{/}">Beneficios</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switcher" aria-label="Language selector">
+      <a th:href="@{/login}" aria-label="Inicio Sesión">
+        <img src="/media/user-icon.png" alt="inicio de sesión"/>
+      </a>
+    </div>
+  </div>
+</header>
+</body>
+</html>
